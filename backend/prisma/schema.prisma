@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String               @id @default(cuid())
+  email       String?              @unique
+  name        String?
+  googleId    String               @unique
+  podcasts    Podcast[] // ✅ Podcasts authored
+  resetTokens PasswordResetToken[] // ✅ Reverse relation to reset tokens
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+}
+
+model Podcast {
+  id        String   @id @default(cuid())
+  title     String
+  fileUri   String
+  duration  Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id])
+}
