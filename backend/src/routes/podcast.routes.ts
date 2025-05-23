@@ -1,39 +1,3 @@
-// import express from 'express';
-// import { authenticate } from '../middleware/auth.middleware';
-// import { prisma } from '../lib/prisma';
-// import { uploadAudioBase64 } from '../utils/uploadAudioToFirebase';
-// import { AuthenticatedRequest } from '../types/authenticated-request';
-
-// const router = express.Router();
-
-// router.post('/', authenticate, async (req: AuthenticatedRequest, res) => {
-//   try {
-//     const { title, base64Audio, duration } = req.body;
-
-//     if (!title || !base64Audio || !duration || !req.user) {
-//       return res.status(400).json({ message: 'Missing fields' });
-//     }
-
-//     const publicUrl = await uploadAudioBase64(base64Audio);
-
-//     const podcast = await prisma.podcast.create({
-//       data: {
-//         title,
-//         duration,
-//         fileUri: publicUrl,
-//         userId: req.user.id,
-//       },
-//     });
-
-//     res.json(podcast);
-//   } catch (err) {
-//     console.error('❌ Podcast upload error:', err);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// });
-
-// export default router;
-
 import express from 'express';
 import { authenticate } from '../middleware/auth.middleware';
 import { prisma } from '../lib/prisma';

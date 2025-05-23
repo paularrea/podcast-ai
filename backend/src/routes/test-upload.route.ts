@@ -1,4 +1,3 @@
-// src/routes/test-upload.route.ts
 import express from 'express';
 import axios from 'axios';
 import { bucket } from '../lib/firebase';
