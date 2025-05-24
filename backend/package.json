@@ -7,6 +7,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@expo/vector-icons": "^14.1.0",
     "@google-cloud/storage": "^7.16.0",
     "@prisma/client": "^6.7.0",
     "bcryptjs": "^2.4.3",
@@ -14,7 +15,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.21.2",
     "firebase-admin": "^13.3.0",
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "^9.0.0",
+    "nativewind": "^4.1.23"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

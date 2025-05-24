@@ -1,0 +1,376 @@
+=== Node Version ===
+v22.15.0
+=== npm Version ===
+10.9.2
+=== OS ===
+Darwin MacBook-Pro.home 21.6.0 Darwin Kernel Version 21.6.0: Mon Jun 24 00:56:10 PDT 2024; root:xnu-8020.240.18.709.2~1/RELEASE_X86_64 x86_64
+=== Expo Doctor ===
+
+  $ expo doctor is not supported in the local CLI, please use npx expo-doctor instead
+
+=== Expo CLI version ===
+0.24.13
+=== Installed Packages ===
+podcast-ai@1.0.0 /Users/mac/Desktop/podcast-ai
+├─┬ @babel/core@7.27.1
+│ ├── @ampproject/remapping@2.3.0
+│ ├── @babel/code-frame@7.27.1
+│ ├── @babel/generator@7.27.1
+│ ├── @babel/helper-compilation-targets@7.27.2
+│ ├── @babel/helper-module-transforms@7.27.1
+│ ├── @babel/helpers@7.27.1
+│ ├── @babel/parser@7.27.2
+│ ├── @babel/template@7.27.2
+│ ├── @babel/traverse@7.27.1
+│ ├── @babel/types@7.27.1
+│ ├── convert-source-map@2.0.0
+│ ├── debug@4.4.1
+│ ├── gensync@1.0.0-beta.2
+│ ├── json5@2.2.3
+│ └── semver@6.3.1
+├─┬ @expo/vector-icons@14.1.0
+│ ├── expo-font@13.3.1 deduped
+│ ├── react-native@0.79.2 deduped
+│ └── react@19.1.0 deduped
+├─┬ @react-native-async-storage/async-storage@2.1.2
+│ ├── merge-options@3.0.4
+│ └── react-native@0.79.2 deduped
+├── @react-native-community/slider@4.5.7
+├─┬ @react-navigation/native@7.1.9
+│ ├── @react-navigation/core@7.9.2
+│ ├── escape-string-regexp@4.0.0
+│ ├── fast-deep-equal@3.1.3
+│ ├── nanoid@3.3.11
+│ ├── react-native@0.79.2 deduped
+│ ├── react@19.1.0 deduped
+│ └── use-latest-callback@0.2.3
+├─┬ @types/react@19.1.5
+│ └── csstype@3.1.3
+├─┬ axios@1.9.0
+│ ├── follow-redirects@1.15.9
+│ ├── form-data@4.0.2
+│ └── proxy-from-env@1.1.0
+├── base64-arraybuffer@1.0.2
+├─┬ expo-auth-session@6.1.5
+│ ├── expo-application@6.1.4
+│ ├── expo-constants@17.1.6
+│ ├── expo-crypto@14.1.4
+│ ├── expo-linking@7.1.5 deduped
+│ ├── expo-web-browser@14.1.6 deduped
+│ ├── invariant@2.2.4
+│ ├── react-native@0.79.2 deduped
+│ └── react@19.1.0 deduped
+├─┬ expo-av@15.1.4
+│ ├── expo@53.0.9 deduped
+│ ├── react-native-web@0.20.0 deduped
+│ ├── react-native@0.79.2 deduped
+│ └── react@19.1.0 deduped
+├─┬ expo-constants@17.0.8
+│ ├── @expo/config@10.0.11
+│ ├── @expo/env@0.4.2
+│ ├── expo@53.0.9 deduped
+│ └── react-native@0.79.2 deduped
+├─┬ expo-file-system@18.1.10
+│ ├── expo@53.0.9 deduped
+│ └── react-native@0.79.2 deduped
+├─┬ expo-font@13.3.1
+│ ├── expo@53.0.9 deduped
+│ ├── fontfaceobserver@2.3.0
+│ └── react@19.1.0 deduped
+├─┬ expo-linking@7.1.5
+│ ├── expo-constants@17.1.6
+│ ├── invariant@2.2.4 deduped
+│ ├── react-native@0.79.2 deduped
+│ └── react@19.1.0 deduped
+├─┬ expo-router@3.5.5
+│ ├── @expo/metro-runtime@3.2.1
+│ ├── @expo/server@0.4.4
+│ ├── @radix-ui/react-slot@1.0.1
+│ ├── @react-navigation/bottom-tabs@6.5.20
+│ ├── UNMET OPTIONAL DEPENDENCY @react-navigation/drawer@^6.5.8
+│ ├── @react-navigation/native-stack@6.9.26
+│ ├── @react-navigation/native@6.1.18
+│ ├── expo-constants@17.0.8 deduped
+│ ├── expo-linking@7.1.5 deduped
+│ ├── expo-splash-screen@0.27.2
+│ ├── expo-status-bar@2.2.3 deduped
+│ ├── expo@53.0.9 deduped
+│ ├── react-native-helmet-async@2.0.4
+│ ├── react-native-reanimated@3.17.5 deduped
+│ ├── react-native-safe-area-context@5.4.1 deduped
+│ ├── react-native-screens@4.10.0 deduped
+│ └── schema-utils@4.3.2
+├─┬ expo-splash-screen@0.30.8
+│ ├── @expo/prebuild-config@9.0.6
+│ └── expo@53.0.9 deduped
+├─┬ expo-status-bar@2.2.3
+│ ├── react-native-edge-to-edge@1.6.0
+│ ├── react-native-is-edge-to-edge@1.1.7
+│ ├── react-native@0.79.2 deduped
+│ └── react@19.1.0 deduped
+├─┬ expo-system-ui@5.0.7
+│ ├── @react-native/normalize-colors@0.79.2
+│ ├── debug@4.4.1 deduped
+│ ├── expo@53.0.9 deduped
+│ ├── react-native-web@0.20.0 deduped
+│ └── react-native@0.79.2 deduped
+├─┬ expo-web-browser@14.1.6
+│ ├── expo@53.0.9 deduped
+│ └── react-native@0.79.2 deduped
+├─┬ expo@53.0.9
+│ ├── @babel/runtime@7.27.1
+│ ├── @expo/cli@0.24.13
+│ ├── @expo/config-plugins@10.0.2
+│ ├── @expo/config@11.0.10
+│ ├── UNMET OPTIONAL DEPENDENCY @expo/dom-webview@*
+│ ├── @expo/fingerprint@0.12.4
+│ ├── @expo/metro-config@0.20.14
+│ ├── @expo/metro-runtime@3.2.1 deduped
+│ ├── @expo/vector-icons@14.1.0 deduped
+│ ├── babel-preset-expo@13.1.11
+│ ├── expo-asset@11.1.5
+│ ├── expo-constants@17.1.6
+│ ├── expo-file-system@18.1.10 deduped
+│ ├── expo-font@13.3.1 deduped
+│ ├── expo-keep-awake@14.1.4
+│ ├── expo-modules-autolinking@2.1.10
+│ ├── expo-modules-core@2.3.13
+│ ├── react-native-edge-to-edge@1.6.0 deduped
+│ ├── UNMET OPTIONAL DEPENDENCY react-native-webview@*
+│ ├── react-native@0.79.2 deduped
+│ ├── react@19.1.0 deduped
+│ └── whatwg-url-without-unicode@8.0.0-3
+├─┬ firebase@11.8.1
+│ ├── @firebase/ai@1.3.0
+│ ├── @firebase/analytics-compat@0.2.22
+│ ├── @firebase/analytics@0.10.16
+│ ├── @firebase/app-check-compat@0.3.25
+│ ├── @firebase/app-check@0.10.0
+│ ├── @firebase/app-compat@0.4.0
+│ ├── @firebase/app-types@0.9.3
+│ ├── @firebase/app@0.13.0
+│ ├── @firebase/auth-compat@0.5.26
+│ ├── @firebase/auth@1.10.6
+│ ├── @firebase/data-connect@0.3.9
+│ ├── @firebase/database-compat@2.0.10
+│ ├── @firebase/database@1.0.19
+│ ├── @firebase/firestore-compat@0.3.51
+│ ├── @firebase/firestore@4.7.16
+│ ├── @firebase/functions-compat@0.3.25
+│ ├── @firebase/functions@0.12.8
+│ ├── @firebase/installations-compat@0.2.17
+│ ├── @firebase/installations@0.6.17
+│ ├── @firebase/messaging-compat@0.2.21
+│ ├── @firebase/messaging@0.12.21
+│ ├── @firebase/performance-compat@0.2.19
+│ ├── @firebase/performance@0.7.6
+│ ├── @firebase/remote-config-compat@0.2.17
+│ ├── @firebase/remote-config@0.6.4
+│ ├── @firebase/storage-compat@0.3.22
+│ ├── @firebase/storage@0.13.12
+│ └── @firebase/util@1.12.0
+├─┬ fs-extra@9.1.0 extraneous
+│ ├── at-least-node@1.0.0
+│ ├── graceful-fs@4.2.11
+│ ├── jsonfile@6.1.0
+│ └── universalify@2.0.1 extraneous
+├─┬ google-auth-library@9.15.1
+│ ├── base64-js@1.5.1
+│ ├── ecdsa-sig-formatter@1.0.11
+│ ├── gaxios@6.7.1
+│ ├── gcp-metadata@6.1.1
+│ ├── gtoken@7.1.0
+│ └── jws@4.0.0
+├─┬ jest-expo@53.0.5
+│ ├── @expo/config@11.0.10 deduped
+│ ├── @expo/json-file@9.1.4
+│ ├── @jest/create-cache-key-function@29.7.0
+│ ├── @jest/globals@29.7.0
+│ ├── babel-jest@29.7.0
+│ ├── expo@53.0.9 deduped
+│ ├── find-up@5.0.0
+│ ├── jest-environment-jsdom@29.7.0
+│ ├── jest-snapshot@29.7.0
+│ ├── jest-watch-select-projects@2.0.0
+│ ├── jest-watch-typeahead@2.2.1
+│ ├── json5@2.2.3 deduped
+│ ├── lodash@4.17.21
+│ ├── react-native@0.79.2 deduped
+│ ├── react-server-dom-webpack@19.0.0
+│ ├── react-test-renderer@19.0.0
+│ ├── server-only@0.0.1
+│ └── stacktrace-js@2.0.2
+├─┬ jest@29.7.0
+│ ├── @jest/core@29.7.0
+│ ├── @jest/types@29.6.3
+│ ├── import-local@3.2.0
+│ ├── jest-cli@29.7.0
+│ └── UNMET OPTIONAL DEPENDENCY node-notifier@^8.0.1 || ^9.0.0 || ^10.0.0
+├─┬ nativewind@2.0.4
+│ ├── @babel/generator@7.27.1 deduped
+│ ├── @babel/types@7.18.13
+│ ├── css-mediaquery@0.1.2
+│ ├── css-to-react-native@3.2.0
+│ ├── micromatch@4.0.8
+│ ├── postcss-calc@8.2.4
+│ ├── postcss-color-functional-notation@4.2.4
+│ ├── postcss-css-variables@0.18.0
+│ ├── postcss-nested@5.0.6
+│ ├── postcss@8.4.49
+│ ├── react-is@18.3.1
+│ ├── tailwindcss@3.4.17 deduped
+│ └── use-sync-external-store@1.5.0
+├─┬ react-dom@19.1.0
+│ ├── react@19.1.0 deduped
+│ └── scheduler@0.26.0
+├─┬ react-native-keyboard-aware-scroll-view@0.9.5
+│ ├── prop-types@15.8.1
+│ ├── react-native-iphone-x-helper@1.3.1
+│ └── react-native@0.79.2 deduped
+├─┬ react-native-reanimated@3.17.5
+│ ├── @babel/core@7.27.1 deduped
+│ ├── @babel/plugin-transform-arrow-functions@7.27.1
+│ ├── @babel/plugin-transform-class-properties@7.27.1
+│ ├── @babel/plugin-transform-classes@7.27.1
+│ ├── @babel/plugin-transform-nullish-coalescing-operator@7.27.1
+│ ├── @babel/plugin-transform-optional-chaining@7.27.1
+│ ├── @babel/plugin-transform-shorthand-properties@7.27.1
+│ ├── @babel/plugin-transform-template-literals@7.27.1
+│ ├── @babel/plugin-transform-unicode-regex@7.27.1
+│ ├── @babel/preset-typescript@7.27.1
+│ ├── convert-source-map@2.0.0 deduped
+│ ├── invariant@2.2.4 deduped
+│ ├── react-native-is-edge-to-edge@1.1.7 deduped
+│ ├── react-native@0.79.2 deduped
+│ └── react@19.1.0 deduped
+├─┬ react-native-safe-area-context@5.4.1
+│ ├── react-native@0.79.2 deduped
+│ └── react@19.1.0 deduped
+├─┬ react-native-screens@4.10.0
+│ ├── react-freeze@1.0.4
+│ ├── react-native@0.79.2 deduped
+│ ├── react@19.1.0 deduped
+│ └── warn-once@0.1.1
+├─┬ react-native-web@0.20.0
+│ ├── @babel/runtime@7.27.1 deduped
+│ ├── @react-native/normalize-colors@0.74.89
+│ ├── fbjs@3.0.5
+│ ├── inline-style-prefixer@7.0.1
+│ ├── memoize-one@6.0.0
+│ ├── nullthrows@1.1.1
+│ ├── postcss-value-parser@4.2.0
+│ ├── react-dom@19.1.0 deduped
+│ ├── react@19.1.0 deduped
+│ └── styleq@0.1.3
+├─┬ react-native@0.79.2
+│ ├── @jest/create-cache-key-function@29.7.0 deduped
+│ ├── @react-native/assets-registry@0.79.2
+│ ├── @react-native/codegen@0.79.2
+│ ├── @react-native/community-cli-plugin@0.79.2
+│ ├── @react-native/gradle-plugin@0.79.2
+│ ├── @react-native/js-polyfills@0.79.2
+│ ├── @react-native/normalize-colors@0.79.2 deduped
+│ ├── @react-native/virtualized-lists@0.79.2
+│ ├── @types/react@19.1.5 deduped
+│ ├── abort-controller@3.0.0
+│ ├── anser@1.4.10
+│ ├── ansi-regex@5.0.1
+│ ├── babel-jest@29.7.0 deduped
+│ ├── babel-plugin-syntax-hermes-parser@0.25.1
+│ ├── base64-js@1.5.1 deduped
+│ ├── chalk@4.1.2
+│ ├── commander@12.1.0
+│ ├── event-target-shim@5.0.1
+│ ├── flow-enums-runtime@0.0.6
+│ ├── glob@7.2.3
+│ ├── invariant@2.2.4 deduped
+│ ├── jest-environment-node@29.7.0
+│ ├── memoize-one@5.2.1
+│ ├── metro-runtime@0.82.4
+│ ├── metro-source-map@0.82.4
+│ ├── nullthrows@1.1.1 deduped
+│ ├── pretty-format@29.7.0
+│ ├── promise@8.3.0
+│ ├── react-devtools-core@6.1.2
+│ ├── react-refresh@0.14.2
+│ ├── react@19.1.0 deduped
+│ ├── regenerator-runtime@0.13.11
+│ ├── scheduler@0.25.0
+│ ├── semver@7.7.2
+│ ├── stacktrace-parser@0.1.11
+│ ├── whatwg-fetch@3.6.20
+│ ├── ws@6.2.3
+│ └── yargs@17.7.2
+├─┬ react-test-renderer@19.1.0
+│ ├── react-is@19.1.0
+│ ├── react@19.1.0 deduped
+│ └── scheduler@0.26.0 deduped
+├── react@19.1.0
+├─┬ tailwindcss@3.4.17
+│ ├── @alloc/quick-lru@5.2.0
+│ ├── arg@5.0.2
+│ ├── chokidar@3.6.0
+│ ├── didyoumean@1.2.2
+│ ├── dlv@1.1.3
+│ ├── fast-glob@3.3.3
+│ ├── glob-parent@6.0.2
+│ ├── is-glob@4.0.3
+│ ├── jiti@1.21.7
+│ ├── lilconfig@3.1.3
+│ ├── micromatch@4.0.8 deduped
+│ ├── normalize-path@3.0.0
+│ ├── object-hash@3.0.0
+│ ├── picocolors@1.1.1
+│ ├── postcss-import@15.1.0
+│ ├── postcss-js@4.0.1
+│ ├── postcss-load-config@4.0.2
+│ ├── postcss-nested@6.2.0
+│ ├── postcss-selector-parser@6.1.2
+│ ├── postcss@8.4.49 deduped
+│ ├── resolve@1.22.10
+│ └── sucrase@3.35.0
+└── typescript@5.8.3
+
+=== babel.config.js ===
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: ['nativewind/babel'],
+  };
+};
+=== tailwind.config.js ===
+module.exports = {
+  content: ['./app/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+=== tsconfig.json ===
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}
+=== Routes ===
+./app/index.tsx
+./app/auth/login.tsx
+./app/(tabs)/index.tsx
+./app/(tabs)/library.tsx
+./app/(tabs)/_layout.tsx
+./app/+not-found.tsx
+./app/_layout.tsx
+./app/modal/playPodcast.tsx
+./app/modal/createPodcast.tsx
+./app/+html.tsx

@@ -5,3 +5,4 @@ export const getIdToken = async (): Promise<string> => {
   if (!user) throw new Error('No user logged in');
   return await user.getIdToken();
 };
+// 
