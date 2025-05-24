@@ -223,7 +223,7 @@ export default function LoginScreen() {
           <Text sx={{ textAlign: 'center', color: '#ccc' }}>Forgot your password?</Text>
         </RNTouchableOpacity>
 
-        <RNTouchableOpacity style={{ marginTop: 24 }} onPress={() => router.push('/auth/signup/email')}>
+        <RNTouchableOpacity style={{ marginTop: 24 }} onPress={() => router.push("auth/signup")}>
           <Text sx={{ textAlign: 'center', color: 'white' }}>
             Don’t have an account?{' '}
             <Text sx={{ textDecorationLine: 'underline' }}>Sign up for PodcastAI</Text>
