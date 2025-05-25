@@ -24,11 +24,10 @@ export default function Step3() {
   const isValid = name && day && month && year && gender;
 
   useEffect(() => {
-  if (!data.email || !data.password) {
-    router.replace("/auth/signup");
-  }
-}, []);
-
+    if (!data.email || !data.password) {
+      router.replace("/auth/signup");
+    }
+  }, []);
 
   const handleNext = () => {
     setData({ ...data, name, dob: { day, month, year }, gender });
@@ -37,6 +36,11 @@ export default function Step3() {
 
   return (
     <View sx={{ flex: 1, px: 6, bg: "background", justifyContent: "center" }}>
+      <Text sx={{ color: "text", fontSize: 14, mb: 1 }}>Step 2 of 3</Text>
+      <View sx={{ height: 4, bg: "muted", borderRadius: 999, mb: 4 }}>
+        <View sx={{ height: 4, width: "66%", bg: "primary", borderRadius: 999 }} />
+      </View>
+
       <Text sx={{ variant: "text.heading", mb: 5 }}>Tell us about yourself</Text>
 
       <Text sx={{ color: "text", fontWeight: "bold", mb: 2 }}>Name</Text>
@@ -44,10 +48,8 @@ export default function Step3() {
         value={name}
         onChangeText={setName}
         placeholder="Your name"
-        placeholderTextColor="#888"
+        placeholderTextColor="#999"
         sx={{
-          borderWidth: 1,
-          borderColor: "muted",
           borderRadius: "md",
           px: 4,
           py: 3,
@@ -57,47 +59,90 @@ export default function Step3() {
         }}
       />
 
-      <Text sx={{ color: "text", fontWeight: "bold", mb: 2 }}>Date of Birth</Text>
-      <View sx={{ flexDirection: "row", gap: 2, mb: 4 }}>
-        <Picker style={{ flex: 1 }} selectedValue={day} onValueChange={setDay}>
-          <Picker.Item label="Day" value="" />
+      <Text sx={{ color: "text", fontWeight: "bold", mb: 2 }}>Date of birth</Text>
+      <View sx={{ flexDirection: "row", justifyContent: "space-between", mb: 6 }}>
+        <Picker style={pickerStyle} selectedValue={day} onValueChange={setDay}>
+          <Picker.Item label="dd" value="" />
           {days.map((d) => <Picker.Item key={d} label={d} value={d} />)}
         </Picker>
-        <Picker style={{ flex: 1 }} selectedValue={month} onValueChange={setMonth}>
+        <Picker style={pickerStyle} selectedValue={month} onValueChange={setMonth}>
           <Picker.Item label="Month" value="" />
           {months.map((m) => <Picker.Item key={m} label={m} value={m} />)}
         </Picker>
-        <Picker style={{ flex: 1 }} selectedValue={year} onValueChange={setYear}>
-          <Picker.Item label="Year" value="" />
+        <Picker style={pickerStyle} selectedValue={year} onValueChange={setYear}>
+          <Picker.Item label="yyyy" value="" />
           {years.map((y) => <Picker.Item key={y} label={y} value={y} />)}
         </Picker>
       </View>
 
       <Text sx={{ color: "text", fontWeight: "bold", mb: 2 }}>Gender</Text>
-      {GENDERS.map((option) => (
-        <Pressable
-          key={option}
-          onPress={() => setGender(option)}
-          sx={{
-            p: 12,
-            borderWidth: 1,
-            borderColor: gender === option ? "primary" : "muted",
-            bg: gender === option ? "secondary" : "background",
-            borderRadius: "md",
-            mb: 3,
-          }}
-        >
-          <Text sx={{ color: "text" }}>{option}</Text>
-        </Pressable>
-      ))}
+      <View sx={{ flexDirection: "row", flexWrap: "wrap", gap: 0, mb: 4 }}>
+        {GENDERS.map((option) => (
+          <Pressable
+            key={option}
+            onPress={() => setGender(option)}
+            sx={{
+              px: 12,
+              py: 6,
+              borderRadius: 999,
+              flexDirection: "row",
+              alignItems: "center",
+              mr: 2,
+              mb: 2,
+            }}
+          >
+            <View
+              sx={{
+                width: 16,
+                height: 16,
+                borderRadius: 999,
+                borderWidth: 2,
+                borderColor: "text",
+                justifyContent: "center",
+                alignItems: "center",
+                mr: 2,
+              }}
+            >
+              {gender === option && (
+                <View sx={{ width: 6, height: 6, borderRadius: 999, bg: "text" }} />
+              )}
+            </View>
+            <Text sx={{ color: "text", fontSize: 14 }}>{option}</Text>
+          </Pressable>
+        ))}
+      </View>
 
-      <Pressable onPress={handleNext} disabled={!isValid} sx={{ bg: "primary", py: 4, borderRadius: "xl", alignItems: "center", mt: 4, opacity: isValid ? 1 : 0.5 }}>
+      <Pressable
+        onPress={handleNext}
+        disabled={!isValid}
+        sx={{
+          bg: isValid ? "primary" : "muted",
+          py: 4,
+          borderRadius: "xl",
+          alignItems: "center",
+          mt: 4,
+          opacity: isValid ? 1 : 0.5,
+        }}
+      >
         <Text sx={{ color: "background", fontWeight: "bold" }}>Next</Text>
       </Pressable>
 
-      <Text onPress={() => router.back()} sx={{ color: "primary", textAlign: "center", mt: 4 }}>
+      <Text
+        onPress={() => router.back()}
+        sx={{ color: "primary", textAlign: "center", mt: 4 }}
+      >
         ← Go back
       </Text>
     </View>
   );
 }
+
+const pickerStyle = {
+  flex: 1,
+  marginRight: 4,
+  backgroundColor: "#1E1E1E",
+  color: "#fff",
+  borderRadius: 8,
+  height: 48,
+  borderWidth: 0,
+};

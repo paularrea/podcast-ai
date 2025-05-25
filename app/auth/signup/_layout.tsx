@@ -5,7 +5,7 @@ import { Stack } from "expo-router";
 export default function SignupLayout() {
   return (
     <SignupFormProvider>
-      <Stack />
+      <Stack screenOptions={{ headerShown: false }} />
     </SignupFormProvider>
   );
 }

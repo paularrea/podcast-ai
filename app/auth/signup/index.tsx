@@ -1,10 +1,17 @@
 import React from "react";
-import { View, Text, Pressable, TextInput } from "dripsy";
+import {
+  SafeAreaView,
+  TextInput as RNTextInput,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
+import { Text, View } from "dripsy";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
 import { useSignupForm } from "./SignupFormContext";
+import { FontAwesome } from "@expo/vector-icons";
 
 const schema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -18,74 +25,89 @@ export default function Step1() {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm({ resolver: zodResolver(schema), defaultValues: { email: data.email } });
+  } = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: { email: data.email },
+  });
 
-  const onSubmit = (values) => {
+    const onSubmit = (values) => {
     setData({ ...data, email: values.email });
     router.push("/auth/signup/step-2");
   };
 
   return (
-    <View sx={{ flex: 1, bg: "background", px: 6, justifyContent: "center" }}>
-      <Text sx={{ variant: "text.heading", mb: 5 }}>Sign up to start creating</Text>
-
-      <Text sx={{ variant: "text.body", fontWeight: "bold", mb: 2 }}>Email address</Text>
-      <TextInput
-        autoCapitalize="none"
-        keyboardType="email-address"
-        value={watch("email")}
-        onChangeText={(text) => setValue("email", text)}
-        placeholder="you@example.com"
-        placeholderTextColor="#888"
-        sx={{
-          borderWidth: 1,
-          borderColor: "muted",
-          borderRadius: "md",
-          px: 4,
-          py: 3,
-          color: "text",
-          bg: "secondary",
-          fontSize: 16,
-        }}
-      />
-      {errors.email && <Text sx={{ color: "error", mt: 2 }}>{errors.email.message}</Text>}
-
-      <Pressable onPress={handleSubmit(onSubmit)} sx={{ bg: "primary", py: 4, borderRadius: "xl", alignItems: "center", my: 5 }}>
-        <Text sx={{ color: "background", fontWeight: "bold" }}>Next</Text>
-      </Pressable>
-
-      <View sx={{ flexDirection: "row", alignItems: "center", mb: 5 }}>
-        <View sx={{ flex: 1, height: 1, bg: "muted" }} />
-        <Text sx={{ color: "muted", mx: 3 }}>or</Text>
-        <View sx={{ flex: 1, height: 1, bg: "muted" }} />
-      </View>
-
-      <Pressable sx={socialBtn}><Text sx={socialText}>Sign up with Google</Text></Pressable>
-      <Pressable disabled sx={socialBtn}><Text sx={[socialText, { color: "muted" }]}>Sign up with Facebook</Text></Pressable>
-      <Pressable disabled sx={socialBtn}><Text sx={[socialText, { color: "muted" }]}>Sign up with Apple</Text></Pressable>
-
-      <Text sx={{ color: "text", mt: 8, textAlign: "center" }}>
-        Already have an account?{" "}
-        <Text onPress={() => router.push("/auth/login")} sx={{ color: "primary", fontWeight: "bold" }}>
-          Log in here
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#121212" }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: "center", paddingHorizontal: 24 }}>
+        <Text sx={{ fontSize: 24, fontWeight: "bold", color: "text", mb: 24, textAlign: "center" }}>
+          Sign up to start creating
         </Text>
-      </Text>
-    </View>
+
+        <SocialButton icon="google" label="Sign up with Google" onPress={() => {}} />
+        <SocialButton icon="facebook" label="Sign up with Facebook" disabled />
+        <SocialButton icon="apple" label="Sign up with Apple" disabled />
+
+        <View sx={{ height: 1, bg: "muted", my: 24 }} />
+
+        <Text sx={{ color: "text", fontWeight: "bold", mb: 4 }}>Email address</Text>
+        <RNTextInput
+          autoCapitalize="none"
+          keyboardType="email-address"
+          value={watch("email")}
+          onChangeText={(text) => setValue("email", text)}
+          placeholder="you@example.com"
+          placeholderTextColor="#999"
+          style={{
+            backgroundColor: "#1E1E1E",
+            color: "#fff",
+            paddingHorizontal: 16,
+            paddingVertical: 12,
+            borderRadius: 8,
+            fontSize: 16,
+            marginBottom: 12,
+          }}
+        />
+        {errors.email && <Text sx={{ color: "error", mt: 2 }}>{errors.email.message}</Text>}
+
+        <TouchableOpacity onPress={handleSubmit(onSubmit)} style={{
+          backgroundColor: "#9B59B6",
+          borderRadius: 999,
+          paddingVertical: 12,
+          alignItems: "center",
+          marginTop: 16,
+        }}>
+          <Text sx={{ color: "background", fontWeight: "bold", fontSize: 16 }}>Next</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{ marginTop: 24 }} onPress={() => router.push("/auth/login")}>
+          <Text sx={{ color: "text", textAlign: "center" }}>
+            Already have an account? <Text sx={{ textDecorationLine: "underline" }}>Log in here</Text>
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-const socialBtn = {
-  bg: "secondary",
-  borderWidth: 1,
-  borderColor: "muted",
-  borderRadius: "xl",
-  py: 4,
-  px: 4,
-  mb: 3,
-  alignItems: "center",
-};
-
-const socialText = {
-  color: "text",
-  fontWeight: "bold",
-};
+function SocialButton({ icon, label, disabled, onPress }: any) {
+  return (
+    <TouchableOpacity
+      disabled={disabled}
+      onPress={onPress}
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 9999,
+        borderWidth: 1,
+        borderColor: "#ccc",
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        marginBottom: 12,
+        opacity: disabled ? 0.5 : 1,
+      }}
+    >
+      <FontAwesome name={icon} size={18} color="white" style={{ marginRight: 8 }} />
+      <Text sx={{ color: "white", fontWeight: "500" }}>{label}</Text>
+    </TouchableOpacity>
+  );
+}
