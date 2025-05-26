@@ -3,10 +3,9 @@ import {
   SafeAreaView,
   ScrollView,
   TextInput as RNTextInput,
-  TouchableOpacity,
 } from "react-native";
 import { useRouter } from "expo-router";
-import { View, Text } from "dripsy";
+import { View, Text, Pressable } from "dripsy";
 import { useSignupForm } from "./SignupFormContext";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -32,10 +31,18 @@ export default function Step2() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#121212" }}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: "center", paddingHorizontal: 24 }}>
-        <Text sx={{ color: "muted", fontSize: 14, mb: 8 }}>Step 1 of 3</Text>
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          justifyContent: "center",
+          paddingHorizontal: 24,
+        }}
+      >
+      <Text sx={{ color: "muted", fontSize: 16, mb: 1 }}>Step 1 of 3</Text>
         <View sx={{ height: 3, bg: "muted", borderRadius: 999, mb: 24 }}>
-          <View sx={{ height: 3, width: "33%", bg: "primary", borderRadius: 999 }} />
+          <View
+            sx={{ height: 3, width: "33%", bg: "primary", borderRadius: 999 }}
+          />
         </View>
 
         <Text sx={{ fontSize: 24, fontWeight: "bold", color: "text", mb: 20 }}>
@@ -59,46 +66,64 @@ export default function Step2() {
               fontSize: 16,
             }}
           />
-          <TouchableOpacity
+          <Pressable
             onPress={() => setShow((prev) => !prev)}
             style={{ position: "absolute", right: 12, top: 12 }}
           >
-            <FontAwesome name={show ? "eye-slash" : "eye"} size={18} color="#ccc" />
-          </TouchableOpacity>
+            <FontAwesome
+              name={show ? "eye-slash" : "eye"}
+              size={18}
+              color="#ccc"
+            />
+          </Pressable>
         </View>
 
-        <Text sx={{ color: "text", fontWeight: "bold", mb: 8 }}>Your password must contain at least:</Text>
+        <Text sx={{ color: "text", fontWeight: "bold", mb: 8 }}>
+          Your password must contain at least:
+        </Text>
         <ChecklistItem checked={hasLetter} label="1 letter" />
-        <ChecklistItem checked={hasNumberOrSymbol} label="1 number or special character" />
+        <ChecklistItem
+          checked={hasNumberOrSymbol}
+          label="1 number or special character"
+        />
         <ChecklistItem checked={hasMinLength} label="10 characters" />
-
-        <TouchableOpacity
+        <Pressable
           onPress={handleNext}
           disabled={!isValid}
-          style={{
-            backgroundColor: isValid ? "#9B59B6" : "#444",
-            borderRadius: 999,
-            paddingVertical: 12,
+          sx={{
+            bg: isValid ? "primary" : "buttonDisabled",
+            borderRadius: "xl",
+            py: 3,
             alignItems: "center",
-            marginTop: 32,
-            opacity: isValid ? 1 : 0.6,
+            mt: 4,
           }}
         >
-          <Text sx={{ color: "background", fontWeight: "bold", fontSize: 16 }}>Next</Text>
-        </TouchableOpacity>
+          <Text sx={{ color: "background", fontWeight: "bold" }}>Next</Text>
+        </Pressable>
 
-        <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 24 }}>
+        <Pressable
+          onPress={() => router.back()}
+          style={{ marginTop: 24 }}
+        >
           <Text sx={{ color: "primary", textAlign: "center" }}>← Go back</Text>
-        </TouchableOpacity>
+        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-function ChecklistItem({ checked, label }: { checked: boolean; label: string }) {
+function ChecklistItem({
+  checked,
+  label,
+}: {
+  checked: boolean;
+  label: string;
+}) {
   return (
     <View sx={{ flexDirection: "row", alignItems: "center", mb: 3 }}>
-      <Text sx={{ color: checked ? "primary" : "muted", fontSize: 16, width: 24 }}>
+      <Text
+        sx={{ color: checked ? "primary" : "muted", fontSize: 16, width: 24 }}
+      >
         {checked ? "✔︎" : "○"}
       </Text>
       <Text sx={{ color: "text", fontSize: 16 }}>{label}</Text>

@@ -3,9 +3,12 @@ import type { Theme as DripsyTheme } from 'dripsy';
 export const theme: DripsyTheme = {
   colors: {
     text: '#ffffff',
-    background: '#121212',
-    primary: '#9B59B6', // new purple primary
-    secondary: '#1E1E1E',
+    // background: '#121212', // purple
+    // primary: '#9B59B6', // purple
+    // secondary: '#1E1E1E', // purple
+    primary: '#FFC107', // amber
+    background: '#181818', // amber
+    secondary: '#222222', // amber
     muted: '#888888',
     error: '#ff5252',
     border: '#444444',

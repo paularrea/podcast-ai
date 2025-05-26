@@ -2,10 +2,10 @@ import React from "react";
 import {
   SafeAreaView,
   TextInput as RNTextInput,
-  TouchableOpacity,
+
   ScrollView,
 } from "react-native";
-import { Text, View } from "dripsy";
+import { Text, View, Pressable } from "dripsy";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -68,21 +68,24 @@ export default function Step1() {
         />
         {errors.email && <Text sx={{ color: "error", mt: 2 }}>{errors.email.message}</Text>}
 
-        <TouchableOpacity onPress={handleSubmit(onSubmit)} style={{
-          backgroundColor: "#9B59B6",
-          borderRadius: 999,
-          paddingVertical: 12,
-          alignItems: "center",
-          marginTop: 16,
-        }}>
-          <Text sx={{ color: "background", fontWeight: "bold", fontSize: 16 }}>Next</Text>
-        </TouchableOpacity>
+                <Pressable
+                  onPress={handleSubmit(onSubmit)}
+                  sx={{
+                    bg: "primary",
+                    borderRadius: "xl",
+                    py: 3,
+                    alignItems: "center",
+                    mt: 4,
+                  }}
+                >
+                  <Text sx={{ color: "background", fontWeight: "bold" }}>Sign Up</Text>
+                </Pressable>
 
-        <TouchableOpacity style={{ marginTop: 24 }} onPress={() => router.push("/auth/login")}>
+        <Pressable style={{ marginTop: 24 }} onPress={() => router.push("/auth/login")}>
           <Text sx={{ color: "text", textAlign: "center" }}>
             Already have an account? <Text sx={{ textDecorationLine: "underline" }}>Log in here</Text>
           </Text>
-        </TouchableOpacity>
+        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
@@ -90,7 +93,7 @@ export default function Step1() {
 
 function SocialButton({ icon, label, disabled, onPress }: any) {
   return (
-    <TouchableOpacity
+    <Pressable
       disabled={disabled}
       onPress={onPress}
       style={{
@@ -108,6 +111,6 @@ function SocialButton({ icon, label, disabled, onPress }: any) {
     >
       <FontAwesome name={icon} size={18} color="white" style={{ marginRight: 8 }} />
       <Text sx={{ color: "white", fontWeight: "500" }}>{label}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 }

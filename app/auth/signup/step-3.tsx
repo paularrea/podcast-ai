@@ -4,11 +4,27 @@ import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
 import { useSignupForm } from "./SignupFormContext";
 
-const GENDERS = ["Man", "Woman", "Non-binary", "Something else", "Prefer not to say"];
+const GENDERS = [
+  "Man",
+  "Woman",
+  "Non-binary",
+  "Something else",
+  "Prefer not to say",
+];
 const years = Array.from({ length: 2025 - 1920 + 1 }, (_, i) => `${2025 - i}`);
 const months = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 const days = Array.from({ length: 31 }, (_, i) => `${i + 1}`);
 
@@ -36,12 +52,16 @@ export default function Step3() {
 
   return (
     <View sx={{ flex: 1, px: 6, bg: "background", justifyContent: "center" }}>
-      <Text sx={{ color: "text", fontSize: 14, mb: 1 }}>Step 2 of 3</Text>
+      <Text sx={{ color: "muted", fontSize: 16, mb: 1 }}>Step 2 of 3</Text>
       <View sx={{ height: 4, bg: "muted", borderRadius: 999, mb: 4 }}>
-        <View sx={{ height: 4, width: "66%", bg: "primary", borderRadius: 999 }} />
+        <View
+          sx={{ height: 4, width: "66%", bg: "primary", borderRadius: 999 }}
+        />
       </View>
 
-      <Text sx={{ variant: "text.heading", mb: 5 }}>Tell us about yourself</Text>
+      <Text sx={{ variant: "text.heading", mb: 5 }}>
+        Tell us about yourself
+      </Text>
 
       <Text sx={{ color: "text", fontWeight: "bold", mb: 2 }}>Name</Text>
       <TextInput
@@ -59,19 +79,37 @@ export default function Step3() {
         }}
       />
 
-      <Text sx={{ color: "text", fontWeight: "bold", mb: 2 }}>Date of birth</Text>
-      <View sx={{ flexDirection: "row", justifyContent: "space-between", mb: 6 }}>
+      <Text sx={{ color: "text", fontWeight: "bold", mb: 2 }}>
+        Date of birth
+      </Text>
+      <View
+        sx={{ flexDirection: "row", justifyContent: "space-between", mb: 6 }}
+      >
         <Picker style={pickerStyle} selectedValue={day} onValueChange={setDay}>
           <Picker.Item label="dd" value="" />
-          {days.map((d) => <Picker.Item key={d} label={d} value={d} />)}
+          {days.map((d) => (
+            <Picker.Item key={d} label={d} value={d} />
+          ))}
         </Picker>
-        <Picker style={pickerStyle} selectedValue={month} onValueChange={setMonth}>
+        <Picker
+          style={pickerStyle}
+          selectedValue={month}
+          onValueChange={setMonth}
+        >
           <Picker.Item label="Month" value="" />
-          {months.map((m) => <Picker.Item key={m} label={m} value={m} />)}
+          {months.map((m) => (
+            <Picker.Item key={m} label={m} value={m} />
+          ))}
         </Picker>
-        <Picker style={pickerStyle} selectedValue={year} onValueChange={setYear}>
+        <Picker
+          style={pickerStyle}
+          selectedValue={year}
+          onValueChange={setYear}
+        >
           <Picker.Item label="yyyy" value="" />
-          {years.map((y) => <Picker.Item key={y} label={y} value={y} />)}
+          {years.map((y) => (
+            <Picker.Item key={y} label={y} value={y} />
+          ))}
         </Picker>
       </View>
 
@@ -104,7 +142,9 @@ export default function Step3() {
               }}
             >
               {gender === option && (
-                <View sx={{ width: 6, height: 6, borderRadius: 999, bg: "text" }} />
+                <View
+                  sx={{ width: 6, height: 6, borderRadius: 999, bg: "text" }}
+                />
               )}
             </View>
             <Text sx={{ color: "text", fontSize: 14 }}>{option}</Text>
@@ -116,12 +156,11 @@ export default function Step3() {
         onPress={handleNext}
         disabled={!isValid}
         sx={{
-          bg: isValid ? "primary" : "muted",
-          py: 4,
+          bg: isValid ? "primary" : "buttonDisabled",
           borderRadius: "xl",
+          py: 3,
           alignItems: "center",
           mt: 4,
-          opacity: isValid ? 1 : 0.5,
         }}
       >
         <Text sx={{ color: "background", fontWeight: "bold" }}>Next</Text>

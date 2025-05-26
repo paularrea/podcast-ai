@@ -39,9 +39,19 @@ export default function Step4() {
 
   return (
     <View sx={{ flex: 1, px: 6, bg: "background", justifyContent: "center" }}>
-      <Text sx={{ color: "text", fontSize: 16, mb: 1 }}>Step 3 of 3</Text>
-      <View sx={{ height: 4, width: "100%", bg: "muted", borderRadius: 9999, mb: 6 }}>
-        <View sx={{ height: 4, width: "100%", bg: "primary", borderRadius: 9999 }} />
+      <Text sx={{ color: "muted", fontSize: 16, mb: 1 }}>Step 3 of 3</Text>
+      <View
+        sx={{
+          height: 4,
+          width: "100%",
+          bg: "muted",
+          borderRadius: 9999,
+          mb: 6,
+        }}
+      >
+        <View
+          sx={{ height: 4, width: "100%", bg: "primary", borderRadius: 9999 }}
+        />
       </View>
 
       <Text sx={{ variant: "text.heading", mb: 5 }}>Terms & Conditions</Text>
@@ -59,7 +69,8 @@ export default function Step4() {
       />
 
       <Text sx={{ fontSize: 12, color: "muted", mt: 4 }}>
-        By clicking on sign-up, you agree to PodcastAI’s Terms and Conditions of Use. See our Privacy Policy for more.
+        By clicking on sign-up, you agree to PodcastAI’s Terms and Conditions of
+        Use. See our Privacy Policy for more.
       </Text>
 
       <Pressable
@@ -67,10 +78,10 @@ export default function Step4() {
         disabled={loading}
         sx={{
           bg: "primary",
-          py: 4,
           borderRadius: "xl",
+          py: 3,
           alignItems: "center",
-          mt: 5,
+          mt: 4,
         }}
       >
         {loading ? (
@@ -90,7 +101,15 @@ export default function Step4() {
   );
 }
 
-function CheckboxRow({ label, value, onValueChange }: { label: string; value: boolean; onValueChange: (val: boolean) => void }) {
+function CheckboxRow({
+  label,
+  value,
+  onValueChange,
+}: {
+  label: string;
+  value: boolean;
+  onValueChange: (val: boolean) => void;
+}) {
   return (
     <Pressable
       onPress={() => onValueChange(!value)}
