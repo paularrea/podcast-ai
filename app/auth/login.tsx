@@ -28,12 +28,12 @@ export default function LoginScreen() {
   const redirectUri = makeRedirectUri({ useProxy: true });
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    expoClientId: "<GOOGLE_CLIENT_ID>",
-    iosClientId: "<GOOGLE_CLIENT_ID>",
-    androidClientId: "<GOOGLE_CLIENT_ID>",
-    webClientId: "<GOOGLE_CLIENT_ID>",
-    scopes: ["profile", "email", "openid"],
-    responseType: "id_token",
+    expoClientId: '1019704937264-5mh4quehvc9tg64p9ija2ksc5orct8sk.apps.googleusercontent.com',
+    iosClientId: '1019704937264-5mh4quehvc9tg64p9ija2ksc5orct8sk.apps.googleusercontent.com',
+    androidClientId: '1019704937264-5mh4quehvc9tg64p9ija2ksc5orct8sk.apps.googleusercontent.com',
+    webClientId: '1019704937264-5mh4quehvc9tg64p9ija2ksc5orct8sk.apps.googleusercontent.com',
+    scopes: ['profile', 'email', 'openid'],
+    responseType: 'id_token',
     redirectUri,
   });
 
