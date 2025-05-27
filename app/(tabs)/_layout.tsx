@@ -1,15 +1,3 @@
-// import { Tabs } from 'expo-router';
-
-// export default function TabsLayout() {
-//   return (
-//     <Tabs>
-//       <Tabs.Screen name="index" options={{ title: 'Home' }} />
-//       <Tabs.Screen name="library" options={{ title: 'My Library' }} />
-//     </Tabs>
-//   );
-// }
-
-// app/(tabs)/_layout.tsx
 import { Tabs } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import { View, Pressable, Modal, Text } from 'react-native';
