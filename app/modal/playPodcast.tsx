@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Platform, View } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Audio } from 'expo-av';
-import { Text, Pressable } from 'dripsy';
-import { useDripsyTheme } from 'dripsy';
+import { Text, Pressable, useDripsyTheme } from 'dripsy';
+import { X } from 'lucide-react-native';
 
 export default function PlayPodcastModal() {
   const { fileUri, title } = useLocalSearchParams();
@@ -11,6 +11,7 @@ export default function PlayPodcastModal() {
   const [sound, setSound] = useState<Audio.Sound | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { theme } = useDripsyTheme();
+  const router = useRouter();
   const colors = theme.colors;
 
   const togglePlayback = async () => {
@@ -58,11 +59,36 @@ export default function PlayPodcastModal() {
   }, [fileUri]);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background, padding: 24 }}>
-      <Text sx={{ variant: 'text.heading', mb: 3, textAlign: 'center' }}>{title}</Text>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.background,
+        padding: 24,
+      }}
+    >
+      {/* ❌ Close Button (always navigates to library) */}
+      <Pressable
+        onPress={() => router.replace('/(tabs)/library')}
+        style={{ position: 'absolute', top: 24, right: 24, zIndex: 10 }}
+      >
+        <X color={colors.text} size={28} />
+      </Pressable>
+
+      <Text
+        sx={{ variant: 'text.heading', mb: 3, textAlign: 'center' }}
+      >
+        {title}
+      </Text>
 
       {Platform.OS === 'web' ? (
-        <audio ref={audioRef} controls src={String(fileUri)} style={{ width: 300 }} />
+        <audio
+          ref={audioRef}
+          controls
+          src={String(fileUri)}
+          style={{ width: 300 }}
+        />
       ) : (
         <Pressable
           onPress={togglePlayback}
@@ -74,7 +100,9 @@ export default function PlayPodcastModal() {
             mt: 2,
           }}
         >
-          <Text sx={{ color: 'background', fontWeight: 'bold' }}>{playing ? 'Pause' : 'Play'}</Text>
+          <Text sx={{ color: 'background', fontWeight: 'bold' }}>
+            {playing ? 'Pause' : 'Play'}
+          </Text>
         </Pressable>
       )}
     </View>
