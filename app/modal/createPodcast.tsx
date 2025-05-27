@@ -1,32 +1,43 @@
-// import { useState } from 'react';
-// import { View, Text, TextInput, Button, TouchableOpacity, Alert } from 'react-native';
-// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-// import { useRouter } from 'expo-router';
-// import { useApi } from '../hooks/useApi';
-// import { createPodcast } from '../../services/podcastService';
-// import { addPodcastToLibrary } from '../../services/libraryService';
-// import type { PodcastEntry } from '../../types/PodcastEntry';
+// import { useState } from "react";
+// import {
+//   View,
+//   Text,
+//   TextInput,
+//   TouchableOpacity,
+//   Pressable,
+//   Alert,
+// } from "react-native";
+// import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+// import { useRouter } from "expo-router";
+// import { useDripsyTheme } from "dripsy";
+// import { useApi } from "../hooks/useApi";
+// import { createPodcast } from "../../services/podcastService";
+// import { addPodcastToLibrary } from "../../services/libraryService";
+// import type { PodcastEntry } from "../../types/PodcastEntry";
 
-// const minuteOptions = ['1', '3', '5'];
-// const narrativeOptions = ['Storytelling', 'Interview', 'News', 'Education'];
+// const minuteOptions = ["1", "3", "5"];
+// const narrativeOptions = ["Storytelling", "Interview", "News", "Education"];
 
 // export default function CreatePodcastModal() {
 //   const router = useRouter();
 //   const { post } = useApi();
+//   const { theme } = useDripsyTheme();
+//   const colors = theme.colors;
+//   const radii = theme.radii;
 
-//   const [title, setTitle] = useState('');
-//   const [minutes, setMinutes] = useState('3');
-//   const [narrativeType, setNarrativeType] = useState('Storytelling');
-//   const [description, setDescription] = useState('');
+//   const [title, setTitle] = useState("");
+//   const [minutes, setMinutes] = useState("3");
+//   const [narrativeType, setNarrativeType] = useState("Storytelling");
+//   const [description, setDescription] = useState("");
 //   const [creating, setCreating] = useState(false);
 
 //   const [steps, setSteps] = useState([
-//     { label: 'Sending prompt to OpenAI', done: false },
-//     { label: 'Receiving script from OpenAI', done: false },
-//     { label: 'Sending script to ElevenLabs', done: false },
-//     { label: 'Generating podcast', done: false },
-//     { label: 'Retrieving podcast', done: false },
-//     { label: 'Uploading to Firebase', done: false },
+//     { label: "Sending prompt to OpenAI", done: false },
+//     { label: "Receiving script from OpenAI", done: false },
+//     { label: "Sending script to ElevenLabs", done: false },
+//     { label: "Generating podcast", done: false },
+//     { label: "Retrieving podcast", done: false },
+//     { label: "Uploading to Firebase", done: false },
 //   ]);
 
 //   const updateStep = (index: number, done: boolean) => {
@@ -38,124 +49,184 @@
 //   };
 
 //   const handleCreatePodcast = async () => {
-//   if (!title || !description) {
-//     Alert.alert('Missing fields', 'Please fill all fields before continuing.');
-//     return;
-//   }
+//     if (!title || !description) {
+//       Alert.alert(
+//         "Missing fields",
+//         "Please fill all fields before continuing."
+//       );
+//       return;
+//     }
 
-//   try {
-//     setCreating(true);
-//     setSteps((prev) => prev.map((step) => ({ ...step, done: false })));
+//     try {
+//       setCreating(true);
+//       setSteps((prev) => prev.map((step) => ({ ...step, done: false })));
 
-//     const base64Audio = await createPodcast(
-//       title,
-//       minutes,
-//       narrativeType,
-//       description,
-//       updateStep
-//     );
+//       const base64Audio = await createPodcast(
+//         title,
+//         minutes,
+//         narrativeType,
+//         description,
+//         updateStep
+//       );
 
-//     updateStep(5, false);
+//       updateStep(5, false);
 
-//     const durationInSeconds = parseInt(minutes, 10) * 60;
+//       const durationInSeconds = parseInt(minutes, 10) * 60;
 
-//     const saved = await post('/api/podcasts', {
-//       title,
-//       base64Audio,
-//       duration: durationInSeconds,
-//     });
+//       const saved = await post("/api/podcasts", {
+//         title,
+//         base64Audio,
+//         duration: durationInSeconds,
+//       });
 
-//     updateStep(5, true);
+//       updateStep(5, true);
 
-//     const entry: PodcastEntry = {
-//       title,
-//       fileUri: saved.fileUri,
-//       createdAt: saved.createdAt,
-//       minutes,
-//     };
+//       const entry: PodcastEntry = {
+//         title,
+//         fileUri: saved.fileUri,
+//         createdAt: saved.createdAt,
+//         minutes,
+//       };
 
-//     addPodcastToLibrary(entry);
-//     Alert.alert('✅ Success', 'Podcast created successfully!');
-//     router.replace('/(tabs)/library');
-//   } catch (err) {
-//     console.error('❌ Error creating podcast:', err);
-//     Alert.alert('Error', 'Failed to create podcast. Please try again.');
-//   } finally {
-//     setCreating(false);
-//   }
-// };
+//       addPodcastToLibrary(entry);
+//       Alert.alert("✅ Success", "Podcast created successfully!");
+//       router.replace("/(tabs)/library");
+//     } catch (err) {
+//       console.error("❌ Error creating podcast:", err);
+//       Alert.alert("Error", "Failed to create podcast. Please try again.");
+//     } finally {
+//       setCreating(false);
+//     }
+//   };
 
 //   return (
-//     <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1, padding: 20 }}>
-//       <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 20 }}>Create New Podcast</Text>
+//     <KeyboardAwareScrollView
+//       contentContainerStyle={{
+//         flexGrow: 1,
+//         padding: 24,
+//         backgroundColor: colors.secondary,
+//       }}
+//     >
+//       <Text
+//         style={{
+//           fontSize: 24,
+//           fontWeight: "bold",
+//           color: colors.text,
+//           marginBottom: 16,
+//         }}
+//       >
+//         Create New Podcast
+//       </Text>
 
-//       <Text style={{ marginBottom: 5 }}>Podcast Title</Text>
+//       <Text style={{ color: colors.text, marginBottom: 4 }}>Podcast Title</Text>
 //       <TextInput
 //         value={title}
 //         onChangeText={setTitle}
-//         style={{ borderWidth: 1, marginBottom: 15, padding: 10, borderRadius: 8 }}
-//         placeholder="Enter podcast title"
-//         placeholderTextColor="gray"
+//         placeholder="Enter title"
+//         placeholderTextColor={colors.placeholder}
+//         style={{
+//           backgroundColor: colors.background,
+//           color: colors.text,
+//           padding: 12,
+//           borderRadius: 8,
+//           marginBottom: 12,
+//         }}
 //       />
 
-//       <Text style={{ marginBottom: 5 }}>Minutes</Text>
-//       <View style={{ flexDirection: 'row', marginBottom: 15 }}>
+//       <Text style={{ color: colors.text, marginBottom: 4 }}>Minutes</Text>
+//       <View style={{ flexDirection: "row", marginBottom: 12 }}>
 //         {minuteOptions.map((opt) => (
 //           <TouchableOpacity
 //             key={opt}
 //             onPress={() => setMinutes(opt)}
 //             style={{
-//               backgroundColor: minutes === opt ? '#007AFF' : '#eee',
+//               backgroundColor:
+//                 minutes === opt ? colors.primary : colors.background,
 //               padding: 10,
 //               marginRight: 10,
 //               borderRadius: 8,
 //             }}
 //           >
-//             <Text style={{ color: minutes === opt ? 'white' : 'black' }}>{opt} min</Text>
+//             <Text
+//               style={{
+//                 color: minutes === opt ? colors.background : colors.text,
+//               }}
+//             >
+//               {opt} min
+//             </Text>
 //           </TouchableOpacity>
 //         ))}
 //       </View>
 
-//       <Text style={{ marginBottom: 5 }}>Narrative Type</Text>
-//       <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 15 }}>
+//       <Text style={{ color: colors.text, marginBottom: 4 }}>
+//         Narrative Type
+//       </Text>
+//       <View
+//         style={{ flexDirection: "row", flexWrap: "wrap", marginBottom: 12 }}
+//       >
 //         {narrativeOptions.map((opt) => (
 //           <TouchableOpacity
 //             key={opt}
 //             onPress={() => setNarrativeType(opt)}
 //             style={{
-//               backgroundColor: narrativeType === opt ? '#007AFF' : '#eee',
+//               backgroundColor:
+//                 narrativeType === opt ? colors.primary : colors.background,
 //               padding: 10,
-//               margin: 5,
+//               margin: 4,
 //               borderRadius: 8,
 //             }}
 //           >
-//             <Text style={{ color: narrativeType === opt ? 'white' : 'black' }}>{opt}</Text>
+//             <Text
+//               style={{
+//                 color: narrativeType === opt ? colors.background : colors.text,
+//               }}
+//             >
+//               {opt}
+//             </Text>
 //           </TouchableOpacity>
 //         ))}
 //       </View>
 
-//       <Text style={{ marginBottom: 5 }}>What's the podcast about?</Text>
+//       <Text style={{ color: colors.text, marginBottom: 4 }}>
+//         What's the podcast about?
+//       </Text>
 //       <TextInput
 //         value={description}
 //         onChangeText={setDescription}
+//         placeholder="Enter a short description"
+//         placeholderTextColor={colors.placeholder}
 //         multiline
 //         numberOfLines={4}
-//         style={{ borderWidth: 1, marginBottom: 20, padding: 10, borderRadius: 8, minHeight: 100 }}
-//         placeholder="Enter a short description"
-//         placeholderTextColor="gray"
+//         style={{
+//           backgroundColor: colors.background,
+//           color: colors.text,
+//           padding: 12,
+//           borderRadius: 8,
+//           minHeight: 100,
+//           marginBottom: 16,
+//         }}
 //       />
 
-//       <Button
-//         title={creating ? 'Creating Podcast...' : 'Create Podcast'}
+//       <Pressable
 //         onPress={handleCreatePodcast}
 //         disabled={creating}
-//       />
+//         style={{
+//           backgroundColor: creating ? colors.buttonDisabled : colors.primary,
+//           padding: 14,
+//           borderRadius: radii.xl,
+//           alignItems: "center",
+//         }}
+//       >
+//         <Text style={{ color: colors.background, fontWeight: "bold" }}>
+//           {creating ? "Creating Podcast..." : "Create Podcast"}
+//         </Text>
+//       </Pressable>
 
 //       {creating && (
 //         <View style={{ marginTop: 20 }}>
 //           {steps.map((step, index) => (
-//             <Text key={index} style={{ marginBottom: 5 }}>
-//               {step.done ? '✅' : '⬜️'} {step.label}
+//             <Text key={index} style={{ color: colors.text, marginBottom: 6 }}>
+//               {step.done ? "✅" : "⬜️"} {step.label}
 //             </Text>
 //           ))}
 //         </View>
@@ -177,7 +248,6 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { useRouter } from "expo-router";
 import { useDripsyTheme } from "dripsy";
 import { useApi } from "../hooks/useApi";
-import { createPodcast } from "../../services/podcastService";
 import { addPodcastToLibrary } from "../../services/libraryService";
 import type { PodcastEntry } from "../../types/PodcastEntry";
 
@@ -198,12 +268,11 @@ export default function CreatePodcastModal() {
   const [creating, setCreating] = useState(false);
 
   const [steps, setSteps] = useState([
-    { label: "Sending prompt to OpenAI", done: false },
-    { label: "Receiving script from OpenAI", done: false },
-    { label: "Sending script to ElevenLabs", done: false },
-    { label: "Generating podcast", done: false },
-    { label: "Retrieving podcast", done: false },
+    { label: "Sending request to server", done: false },
+    { label: "Generating script", done: false },
+    { label: "Synthesizing audio", done: false },
     { label: "Uploading to Firebase", done: false },
+    { label: "Saving podcast", done: false },
   ]);
 
   const updateStep = (index: number, done: boolean) => {
@@ -227,34 +296,29 @@ export default function CreatePodcastModal() {
       setCreating(true);
       setSteps((prev) => prev.map((step) => ({ ...step, done: false })));
 
-      const base64Audio = await createPodcast(
+      updateStep(0, true);
+
+      const res = await post("/api/podcasts", {
         title,
         minutes,
         narrativeType,
         description,
-        updateStep
-      );
-
-      updateStep(5, false);
-
-      const durationInSeconds = parseInt(minutes, 10) * 60;
-
-      const saved = await post("/api/podcasts", {
-        title,
-        base64Audio,
-        duration: durationInSeconds,
       });
 
-      updateStep(5, true);
+      updateStep(1, true);
+      updateStep(2, true);
+      updateStep(3, true);
+      updateStep(4, true);
 
       const entry: PodcastEntry = {
-        title,
-        fileUri: saved.fileUri,
-        createdAt: saved.createdAt,
+        title: res.title,
+        fileUri: res.fileUri,
+        createdAt: res.createdAt,
         minutes,
       };
 
       addPodcastToLibrary(entry);
+
       Alert.alert("✅ Success", "Podcast created successfully!");
       router.replace("/(tabs)/library");
     } catch (err) {
