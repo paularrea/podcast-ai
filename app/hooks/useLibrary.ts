@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useApi } from './useApi';
+import {getIdToken} from "./useIdToken"
 
 export interface Podcast {
   id: string;
@@ -40,9 +41,22 @@ export const useLibrary = () => {
     }
   };
 
-  useEffect(() => {
-    loadLibrary();
-  }, []);
+  // useEffect(() => {
+  //   loadLibrary();
+  // }, []);
+
+    useEffect(() => {
+  const init = async () => {
+    try {
+      const token = await getIdToken();
+      if (!token) return;
+      await loadLibrary();
+    } catch (e) {
+      console.warn('🛑 Skipping podcast fetch: not logged in');
+    }
+  };
+  init();
+}, []);
 
   return {
     podcasts,

@@ -1,10 +1,10 @@
 import { Tabs } from 'expo-router';
 import { BlurView } from 'expo-blur';
-import { View, Pressable, Modal, Text } from 'react-native';
+import { View, Pressable, Modal, Text, Platform } from 'react-native';
 import { useState } from 'react';
 import { useDripsyTheme } from 'dripsy';
-import { Home, PlusCircle, Library, User } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
+import { Home, PlusCircle, Library, User } from 'lucide-react-native';
 
 const TabIconLabel = ({ Icon, label, color }) => (
   <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: 50 }}>
@@ -72,34 +72,54 @@ export default function TabLayout() {
         />
       </Tabs>
 
-      <Modal
-        visible={modalVisible}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setModalVisible(false)}>
-        <Pressable
-          style={{ flex: 1 }}
-          onPressOut={() => setModalVisible(false)}>
-          <BlurView
-            intensity={90}
-            tint="dark"
-            style={{ flex: 1, justifyContent: 'flex-end' }}>
-            <View
-              style={{
-                backgroundColor: colors.secondary,
-                borderTopLeftRadius: 24,
-                borderTopRightRadius: 24,
-                padding: 24,
-              }}>
-              <ModalOption text="Create new Podcast" enabled onPress={() => {
-                setModalVisible(false);
-                router.push('/modal/createPodcast');
-              }} />
-              <ModalOption text="Create list of episodes" enabled={false} />
-            </View>
-          </BlurView>
-        </Pressable>
-      </Modal>
+      {modalVisible && (
+        <Modal
+          visible
+          transparent
+          animationType="slide"
+          onRequestClose={() => setModalVisible(false)}>
+          <Pressable
+            style={{ flex: 1 }}
+            onPressOut={() => setModalVisible(false)}>
+            {Platform.OS !== 'web' ? (
+              <BlurView
+                intensity={90}
+                tint="dark"
+                style={{ flex: 1, justifyContent: 'flex-end' }}>
+                <View
+                  style={{
+                    backgroundColor: colors.secondary,
+                    borderTopLeftRadius: 24,
+                    borderTopRightRadius: 24,
+                    padding: 24,
+                  }}>
+                  <ModalOption text="Create new Podcast" enabled onPress={() => {
+                    setModalVisible(false);
+                    router.push('/modal/createPodcast');
+                  }} />
+                  <ModalOption text="Create list of episodes" enabled={false} />
+                </View>
+              </BlurView>
+            ) : (
+              <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.6)' }}>
+                <View
+                  style={{
+                    backgroundColor: colors.secondary,
+                    borderTopLeftRadius: 24,
+                    borderTopRightRadius: 24,
+                    padding: 24,
+                  }}>
+                  <ModalOption text="Create new Podcast" enabled onPress={() => {
+                    setModalVisible(false);
+                    router.push('/modal/createPodcast');
+                  }} />
+                  <ModalOption text="Create list of episodes" enabled={false} />
+                </View>
+              </View>
+            )}
+          </Pressable>
+        </Modal>
+      )}
     </>
   );
 }
@@ -107,6 +127,7 @@ export default function TabLayout() {
 function ModalOption({ text, enabled = true, onPress }) {
   const { theme } = useDripsyTheme();
   const colors = theme.colors;
+  const Icon = PlusCircle;
   return (
     <Pressable
       onPress={enabled ? onPress : undefined}
@@ -126,7 +147,7 @@ function ModalOption({ text, enabled = true, onPress }) {
           alignItems: 'center',
           marginRight: 16,
         }}>
-        <PlusCircle size={20} color={colors.text} />
+        <Icon size={20} color={colors.text} />
       </View>
       <Text style={{ color: colors.text, fontSize: 16 }}>{text}</Text>
     </Pressable>
