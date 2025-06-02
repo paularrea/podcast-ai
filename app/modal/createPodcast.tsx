@@ -8,13 +8,12 @@ import {
   Alert,
   Platform,
 } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useRouter } from "expo-router";
 import { useDripsyTheme } from "dripsy";
-import { useApi } from "../hooks/useApi";
+import { useApi } from "../../hooks/useApi";
 import { addPodcastToLibrary } from "../../services/libraryService";
 import type { PodcastEntry } from "../../types/PodcastEntry";
-import { X } from "lucide-react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 const minuteOptions = ["1", "3", "5"];
 const narrativeOptions = ["Storytelling", "Interview", "News", "Education"];
@@ -91,19 +90,19 @@ export default function CreatePodcastModal() {
   };
 
   return (
-    <KeyboardAwareScrollView
-      contentContainerStyle={{
-        flexGrow: 1,
+    <View
+      style={{
+        flex: 1,
         padding: 24,
         backgroundColor: colors.secondary,
       }}
     >
-      {/* ❌ Close Button */}
+      {/* ✅ Close Button with Ionicons */}
       <Pressable
         onPress={() => router.back()}
         style={{ position: "absolute", top: 24, right: 24, zIndex: 10 }}
       >
-        <X color={colors.text} size={28} />
+        <Ionicons name="close-outline" size={28} color={colors.text} />
       </Pressable>
 
       <Text
@@ -231,6 +230,6 @@ export default function CreatePodcastModal() {
           ))}
         </View>
       )}
-    </KeyboardAwareScrollView>
+    </View>
   );
 }

@@ -3,7 +3,7 @@ import { Platform, View } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Audio } from 'expo-av';
 import { Text, Pressable, useDripsyTheme } from 'dripsy';
-import { X } from 'lucide-react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function PlayPodcastModal() {
   const { fileUri, title } = useLocalSearchParams();
@@ -68,12 +68,12 @@ export default function PlayPodcastModal() {
         padding: 24,
       }}
     >
-      {/* ❌ Close Button (always navigates to library) */}
+      {/* ✅ Close Button using Ionicons */}
       <Pressable
         onPress={() => router.replace('/(tabs)/library')}
         style={{ position: 'absolute', top: 24, right: 24, zIndex: 10 }}
       >
-        <X color={colors.text} size={28} />
+        <Ionicons name="close-outline" size={28} color={colors.text} />
       </Pressable>
 
       <Text

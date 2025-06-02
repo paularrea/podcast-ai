@@ -3,8 +3,8 @@ import { View, ActivityIndicator } from 'react-native';
 import { Text } from 'dripsy';
 import { useRouter } from 'expo-router';
 import { signOut, onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
-import { auth } from '../config/firebase';
-import { useApi } from '../hooks/useApi';
+import { auth } from '../../config/firebase';
+import { useApi } from '../../hooks/useApi';
 import { useDripsyTheme } from 'dripsy';
 
 export default function Home() {

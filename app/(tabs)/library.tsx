@@ -3,7 +3,7 @@ import { FlatList, View, Platform, Pressable as RNPressable } from 'react-native
 import { Text, Pressable, useDripsyTheme } from 'dripsy';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { useApi } from '../hooks/useApi';
+import { useApi } from '../../hooks/useApi';
 import { getLibrary } from '../../services/libraryService';
 import type { PodcastEntry } from '../../types/PodcastEntry';
 import DeletePodcastModal from '../../components/DeletePodcastModal';

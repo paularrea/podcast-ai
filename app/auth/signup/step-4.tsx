@@ -3,7 +3,7 @@ import { View, Text, Pressable, ActivityIndicator } from "dripsy";
 import { useRouter } from "expo-router";
 import { useSignupForm } from "./SignupFormContext";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../config/firebase";
+import { auth } from "../../../config/firebase";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function Step4() {

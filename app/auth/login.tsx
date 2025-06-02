@@ -14,7 +14,7 @@ import {
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
 import { makeRedirectUri } from "expo-auth-session";
-import { auth } from "../config/firebase";
+import { auth } from "../../config/firebase";
 
 WebBrowser.maybeCompleteAuthSession();
 

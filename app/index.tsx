@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { View, ActivityIndicator, Alert, Platform } from 'react-native';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './config/firebase';
+import { auth } from '../config/firebase';
 import { useRouter } from 'expo-router';
-import { getIdToken } from './hooks/useIdToken';
+import { getIdToken } from '../hooks/useIdToken';
 import Constants from 'expo-constants';
 
 export default function IndexRedirect() {

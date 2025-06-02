@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Text, Pressable, ActivityIndicator, Alert } from 'react-native';
-import { useApi } from '../hooks/useApi';
+import { useApi } from '../../hooks/useApi';
 import { getAuth, signOut } from 'firebase/auth';
 import { useRouter } from 'expo-router';
 import { useDripsyTheme } from 'dripsy';
