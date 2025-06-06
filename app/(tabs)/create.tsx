@@ -54,7 +54,7 @@ function CreateCard({
     <Pressable
       onPress={!disabled ? onPress : undefined}
       style={{
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.secondaryBg,
         borderRadius: 16,
         padding: 16,
         marginBottom: 16,

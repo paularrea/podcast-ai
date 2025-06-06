@@ -12,9 +12,9 @@ export const synthesizePollySpeech = async (text: string): Promise<Buffer> => {
   const params: AWS.Polly.SynthesizeSpeechInput = {
     Text: text,
     OutputFormat: 'mp3',
-    VoiceId: 'Lupe',       // Spanish voice example (Joanna/Matthew for English)
+    VoiceId: 'Joanna',
     Engine: 'neural',
-    LanguageCode: 'es-US', // 'en-US' for English
+    LanguageCode: 'en-US',
   };
 
   const result = await polly.synthesizeSpeech(params).promise();

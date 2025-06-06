@@ -7,8 +7,9 @@ export const theme: DripsyTheme = {
     // primary: '#9B59B6', // purple
     // secondary: '#1E1E1E', // purple
     primary: '#FFC107', // amber
+    secondary: '#C49A00', // amber
     background: '#181818', // amber
-    secondary: '#222222', // amber
+    secondaryBg: '#222222',
     muted: '#888888',
     error: '#ff5252',
     border: '#444444',

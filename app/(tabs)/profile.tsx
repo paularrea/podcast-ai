@@ -76,7 +76,7 @@ export default function ProfileScreen() {
               borderWidth: 2,
               borderColor: selectedEngine === engine ? colors.primary : colors.border,
               borderRadius: 8,
-              backgroundColor: selectedEngine === engine ? colors.primary : colors.secondary,
+              backgroundColor: selectedEngine === engine ? colors.primary : colors.secondaryBg,
             }}
           >
             <Text
