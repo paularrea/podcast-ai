@@ -1,7 +1,7 @@
 {
   "name": "podcast-ai-backend",
   "version": "1.0.0",
-  "main": "src/index.ts",
+"main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn src/server.ts",
     "build": "tsc",
