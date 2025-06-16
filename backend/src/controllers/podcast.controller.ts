@@ -2,8 +2,8 @@ import { Response } from 'express';
 import { getUserPodcasts } from '../models/podcast.model';
 import { AuthenticatedRequest } from '../types/authenticated-request';
 import { getUserVoiceEngine } from '../lib/userPreferences';
-import { synthesizePollySpeech } from '../../service/pollyService';
-import { synthesizeElevenLabsSpeech } from '../../service/elevenlabsService';
+import { synthesizePollySpeech } from '../service/pollyService';
+import { synthesizeElevenLabsSpeech } from '../service/elevenlabsService';
 import { uploadAudioBase64 } from '../utils/uploadAudioToFirebase';
 import { prisma } from '../lib/prisma';
 

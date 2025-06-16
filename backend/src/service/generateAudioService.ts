@@ -1,6 +1,6 @@
-import { getUserVoiceEngine } from '../src/lib/userPreferences';
+import { getUserVoiceEngine } from '../lib/userPreferences';
 import { synthesizePollySpeech } from './pollyService';
-import { synthesizeElevenLabsSpeech } from './elevenLabsService';
+import { synthesizeElevenLabsSpeech } from './elevenlabsService';
 
 export async function generatePodcastAudio(
   userId: string,

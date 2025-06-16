@@ -1,5 +1,8 @@
 import 'dotenv/config';
 
+const isProd = process.env.APP_ENV === 'production';
+
+
 export default {
   expo: {
     name: "Podcast AI",
@@ -17,7 +20,7 @@ export default {
     },
     plugins: ["expo-build-properties"],
     extra: {
-      API_URL: process.env.API_URL,
+      API_URL: isProd ? process.env.API_URL : "http://localhost:5001",
       ELEVENLABS_API_KEY: process.env.ELEVENLABS_API_KEY,
       OPENAI_API_KEY: process.env.OPENAI_API_KEY,
       eas: {
