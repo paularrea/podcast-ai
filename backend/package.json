@@ -1,7 +1,7 @@
 {
   "name": "podcast-ai-backend",
   "version": "1.0.0",
-"main": "dist/server.js",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn src/server.ts",
     "build": "tsc",
@@ -11,6 +11,9 @@
     "@expo/vector-icons": "^14.1.0",
     "@google-cloud/storage": "^7.16.0",
     "@prisma/client": "^6.7.0",
+    "aws-sdk": "^2.1692.0",
+    "axios": "^1.10.0",
+    "base64-arraybuffer": "^1.0.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
