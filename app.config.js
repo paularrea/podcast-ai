@@ -19,7 +19,10 @@ export default {
     extra: {
       API_URL: process.env.API_URL,
       ELEVENLABS_API_KEY: process.env.ELEVENLABS_API_KEY,
-      OPENAI_API_KEY: process.env.OPENAI_API_KEY
+      OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+      eas: {
+        projectId: "805fdd98-54ad-4814-a8bf-bdaf7db9a0b0"
+      }
     }
   }
 };

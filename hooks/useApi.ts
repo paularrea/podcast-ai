@@ -1,13 +1,7 @@
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import Constants from 'expo-constants';
-import { Platform } from 'react-native';
 
-const LOCAL_IP = 'http://192.168.1.70:5000';
-const ANDROID_LOCALHOST = 'http://10.0.2.2:5000';
-
-const API_URL =
-  Constants.expoConfig?.extra?.API_URL ||
-  (Platform.OS === 'android' ? ANDROID_LOCALHOST : LOCAL_IP);
+const API_URL = Constants.expoConfig?.extra?.API_URL;
 
 console.log('[📡 API_URL]', API_URL);
 
